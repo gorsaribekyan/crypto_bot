@@ -6,7 +6,7 @@ import {obj} from './api.js'
 
 const bot = new Telegraf(process.env.TOKEN)
 
-bot.start((ctx) => {
+bot.start(async (ctx) => {
     fs.appendFile('users.txt', JSON.stringify(ctx.message.from)+'\n', function (err) {
         if (err) {
             console.log(err)
@@ -41,19 +41,30 @@ bot.start((ctx) => {
 <code>---------------------------</code>
 /SHIB - $<code>${+obj.shib.c.toString()}</code> | <code>${obj.shib.P.slice(0,1) != '-' ? '+' + (+obj.shib.P).toFixed(2) + '</code>%' + ' 🟢' : (+obj.shib.P).toFixed(2) + '</code>%' + ' 🔴'}
     `
-    
-    ctx.reply(start_text, {parse_mode:'HTML'})
+    try{
+	    await ctx.reply(start_text, {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 
 })
 
 
-bot.help((ctx) => {
-	bot.telegram.copyMessage(ctx.chat.id, -1001627405148, 16);
+bot.help(async (ctx) => {
+    try{
+		await bot.telegram.copyMessage(ctx.chat.id, -1001627405148, 16);
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('admin', (ctx) => {
-	ctx.reply('@mr_an0nim')
+    try{
+    	ctx.reply('@mr_an0nim')
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
@@ -106,78 +117,136 @@ function coins_res(coin){ //data=obj
 
 
 bot.command('BTC', (ctx) => {
-	ctx.replyWithHTML(coins_res('btc'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('btc'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('ETH', (ctx) => {
-	ctx.replyWithHTML(coins_res('eth'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('eth'), {parse_mode:'HTML'})
+
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('BNB', (ctx) => {
-	ctx.replyWithHTML(coins_res('bnb'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('bnb'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('DOT', (ctx) => {
-	ctx.replyWithHTML(coins_res('dot'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('dot'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('ADA', (ctx) => {
-	ctx.replyWithHTML(coins_res('ada'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('ada'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('XMR', (ctx) => {
-	ctx.replyWithHTML(coins_res('xmr'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('xmr'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('XLM', (ctx) => {
-	ctx.replyWithHTML(coins_res('xlm'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('xlm'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 bot.command('XRP', (ctx) => {
-	ctx.replyWithHTML(coins_res('xrp'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('xrp'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
-bot.command('LTC', (ctx) => {
-	ctx.replyWithHTML(coins_res('ltc'), {parse_mode:'HTML'})
+bot.command('LTC', (ctx) => {    
+	try{
+    	ctx.replyWithHTML(coins_res('ltc'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 
 bot.command('BCH', (ctx) => {
-	ctx.replyWithHTML(coins_res('bch'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('bch'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 
 bot.command('WAXP', (ctx) => {
-	ctx.replyWithHTML(coins_res('waxp'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('waxp'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 
 bot.command('DOGE', (ctx) => {
-	ctx.replyWithHTML(coins_res('doge'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('doge'), {parse_mode:'HTML'})
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 
 bot.command('SHIB', (ctx) => {
-	ctx.replyWithHTML(coins_res('shib'), {parse_mode:'HTML'})
+    try{
+    	ctx.replyWithHTML(coins_res('shib'), {parse_mode:'HTML'})
+
+    }catch(e){
+    	console.log(e)
+    }
 })
 
 
 function start(){
-    // let coins = ['btc', 'eth', 'bnb', 'dot', 'ada', 'xmr', 'xlm', 'xrp', 'ltc', 'bch', 'waxp', 'doge', 'shib']
-    bot.launch() 
-    console.log("[+] bot started") 
+    try{
+	    // let coins = ['btc', 'eth', 'bnb', 'dot', 'ada', 'xmr', 'xlm', 'xrp', 'ltc', 'bch', 'waxp', 'doge', 'shib']
+	    bot.launch() 
+	    console.log("[+] bot started")    
+    }catch(e){
+    	console.log(e)
+    } 
 }
 setTimeout(start, 10000)
 
