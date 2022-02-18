@@ -82,7 +82,7 @@ shib.onmessage = (data_shib) => {
 
 let dash = new WebSocket('wss://stream.binance.com:9443/ws/dashusdt@ticker');
 dash.onmessage = (data_dash) => {
-    data_shib = JSON.parse(data_dash.data)
+    data_dash = JSON.parse(data_dash.data)
     obj["dash"] = data_dash
 }
 
