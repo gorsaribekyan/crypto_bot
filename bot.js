@@ -40,7 +40,10 @@ bot.start(async (ctx) => {
 /DOGE - $<code>${+obj.doge.c.toString()}</code> | <code>${obj.doge.P.slice(0,1) != '-' ? '+' + (+obj.doge.P).toFixed(2) + '</code>%' + ' 🟢' : (+obj.doge.P).toFixed(2) + '</code>%' + ' 🔴'}
 <code>---------------------------</code>
 /SHIB - $<code>${+obj.shib.c.toString()}</code> | <code>${obj.shib.P.slice(0,1) != '-' ? '+' + (+obj.shib.P).toFixed(2) + '</code>%' + ' 🟢' : (+obj.shib.P).toFixed(2) + '</code>%' + ' 🔴'}
-    `
+<code>---------------------------</code>
+/DASH - $<code>${+obj.dash.c.toString()}</code> | <code>${obj.dash.P.slice(0,1) != '-' ? '+' + (+obj.dash.P).toFixed(2) + '</code>%' + ' 🟢' : (+obj.dash.P).toFixed(2) + '</code>%' + ' 🔴'}
+    
+`
     try{
 	    await ctx.reply(start_text, {parse_mode:'HTML'})
     }catch(e){
@@ -93,12 +96,13 @@ function coins_res(coin){ //data=obj
         "bch" : "Bitcoin Cash",
         "waxp" : "WAX",
         "doge" : "Dogecoin",
-        "shib" : "Shiba Inu"
+        "shib" : "Shiba Inu",
+	"dash" : "Dash"
     }
     let {price_change, price_change_percent, last_price, high_price, low_price} = x(obj, coin)
 
     let res_text = `
-    🤑 ${coin_name[coin]}(<b>${coin.toUpperCase()}</b>)  /  <b>USDT</b>   24ժ
+    ${coin_name[coin]}(<b>${coin.toUpperCase()}</b>)  /  <b>USDT</b>   24ժ
     
     <code>Ներկա գինը - </code><b>${last_price}</b>
     <code>----------------------------</code>
@@ -232,6 +236,16 @@ bot.command('DOGE', (ctx) => {
 bot.command('SHIB', (ctx) => {
     try{
     	ctx.replyWithHTML(coins_res('shib'), {parse_mode:'HTML'})
+
+    }catch(e){
+    	console.log(e)
+    }
+})
+
+
+bot.command('DASH', (ctx) => {
+    try{
+    	ctx.replyWithHTML(coins_res('dash'), {parse_mode:'HTML'})
 
     }catch(e){
     	console.log(e)
