@@ -102,17 +102,17 @@ function coins_res(coin){ //data=obj
     let {price_change, price_change_percent, last_price, high_price, low_price} = x(obj, coin)
 
     let res_text = `
-    ${coin_name[coin]}(<b>${coin.toUpperCase()}</b>)  /  <b>USDT</b>   24ժ
+${coin_name[coin]}(<b>${coin.toUpperCase()}</b>)  /  <b>USDT</b>   24ժ
     
-    <code>Ներկա գինը - </code><b>${last_price}</b>
-    <code>----------------------------</code>
-    <code>Գնի տատանումը - </code><b>${price_change}</b>
-    <code>----------------------------</code>
-    <code>Գնի տատանման տոկոսը - </code><b>${price_change_percent}</b>%
-    <code>----------------------------</code>
-    <code>Ամենաբարձր գինը - </code><b>${high_price}</b>
-    <code>----------------------------</code>
-    <code>Ամենացածր գինը - </code><b>${low_price}</b>
+<code>Ներկա գինը - </code><b>${last_price}</b>
+<code>----------------------------</code>
+<code>Գնի տատանումը - </code><b>${price_change}</b>
+<code>----------------------------</code>
+<code>Գնի տատանման տոկոսը - </code><b>${price_change_percent}</b>%
+<code>----------------------------</code>
+<code>Ամենաբարձր գինը - </code><b>${high_price}</b>
+<code>----------------------------</code>
+<code>Ամենացածր գինը - </code><b>${low_price}</b>
     
     `
     return res_text
